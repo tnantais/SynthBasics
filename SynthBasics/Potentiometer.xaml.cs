@@ -50,6 +50,10 @@ namespace SynthBasics
             Label theLabel = c.numberDisplay;
 
             theLabel.Content = args.NewValue.ToString();
+
+            double proportion = (double)(args.NewValue) / 100.0;
+
+            c.thumb.SetValue(Canvas.LeftProperty, proportion * c.sliderbkgnd.ActualWidth);
         }
     }
 }
