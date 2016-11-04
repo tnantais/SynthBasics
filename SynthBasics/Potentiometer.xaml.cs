@@ -23,5 +23,16 @@ namespace SynthBasics
         {
             InitializeComponent();
         }
+
+        private double currSetting = 0.0;
+        public double CurrentSetting
+        {
+            get { return currSetting; }
+            set
+            {
+                currSetting = value;
+                numberDisplay.Content = CurrentSetting.ToString();
+            }
+        }
     }
 }
