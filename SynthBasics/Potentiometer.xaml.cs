@@ -24,15 +24,32 @@ namespace SynthBasics
             InitializeComponent();
         }
 
-        private double currSetting = 0.0;
         public double CurrentSetting
         {
-            get { return currSetting; }
-            set
-            {
-                currSetting = value;
-                numberDisplay.Content = CurrentSetting.ToString();
-            }
+            get { return (double)GetValue(CurrentSettingProperty); }
+            set { SetValue(CurrentSettingProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CurrentSetting.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CurrentSettingProperty =
+            DependencyProperty.Register("CurrentSetting", typeof(double), typeof(Potentiometer), new UIPropertyMetadata(10.0, new PropertyChangedCallback(CurrentSettingChanged)), 
+                                        new ValidateValueCallback(ValidateCurrentSetting));
+
+        public static bool ValidateCurrentSetting(object value)
+        {
+            if (Convert.ToDouble(value) >= 0 && Convert.ToDouble(value) <= 100)
+                return true;
+
+            return false;
+        }
+
+        private static void CurrentSettingChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs args)
+        {
+            Potentiometer c = (Potentiometer)depObj;
+
+            Label theLabel = c.numberDisplay;
+
+            theLabel.Content = args.NewValue.ToString();
         }
     }
 }

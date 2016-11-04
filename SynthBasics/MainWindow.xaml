@@ -4,13 +4,13 @@
         xmlns:myCtrls="clr-namespace:SynthBasics"
         Title="MainWindow" Height="350" Width="525">
     <StackPanel>
-        <myCtrls:Potentiometer x:Name="myPot" CurrentSetting="50">
+        <myCtrls:Potentiometer x:Name="myPot" CurrentSetting="50.0">
             <myCtrls:Potentiometer.Triggers>
                 <EventTrigger RoutedEvent="myCtrls:Potentiometer.Loaded">
                     <EventTrigger.Actions>
                         <BeginStoryboard>
                             <Storyboard TargetProperty="CurrentSetting">
-                                <DoubleAnimation From="50" To="60" By="0.1" Duration="0:0:1"/>
+                                <DoubleAnimation From="50" To="60" Duration="0:0:5"/>
                             </Storyboard>
                         </BeginStoryboard>
                     </EventTrigger.Actions>
