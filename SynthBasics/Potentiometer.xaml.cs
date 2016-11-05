@@ -43,6 +43,7 @@ namespace SynthBasics
             return false;
         }
 
+        /*
         private static void CurrentSettingChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs args)
         {
             Potentiometer c = (Potentiometer)depObj;
@@ -55,5 +56,14 @@ namespace SynthBasics
 
             c.thumb.SetValue(Canvas.LeftProperty, proportion * c.sliderbkgnd.ActualWidth);
         }
+         */ 
+
+        private static void CurrentSettingChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs args)
+        {
+            Potentiometer c = (Potentiometer)depObj;
+
+            double proportion = (double)(args.NewValue) / 100.0;
+        }
+        
     }
 }
