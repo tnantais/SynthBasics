@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="400">
-    <Canvas Width="389.171" Height="389.171" Opacity="1" Background="{x:Null}">
+    <Canvas x:Name="bkgnd" Width="389.171" Height="389.171" Opacity="1" Background="{x:Null}">
         <Path x:Name="Path" Width="355" Height="303.744" Canvas.Left="17.0855" Canvas.Top="17.0854" Stretch="Fill" StrokeThickness="5" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 70.8418,318.329C 2.50002,249.987 2.50002,139.184 70.8418,70.8418C 139.184,2.5 249.987,2.5 318.329,70.8418C 386.671,139.184 386.671,249.987 318.329,318.329"/>
         <Ellipse x:Name="Ellipse" Width="298" Height="298" Canvas.Left="45.5855" Canvas.Top="45.5854" Stretch="Fill" Fill="#FFEBF934"/>
         <Ellipse x:Name="Ellipse_0" Width="283" Height="283" Canvas.Left="53.0855" Canvas.Top="53.0854" Stretch="Fill">
@@ -34,7 +34,7 @@
                 </LinearGradientBrush>
             </Ellipse.Fill>
         </Ellipse>
-        <Ellipse x:Name="Ellipse_4" Width="32.6667" Height="32.6667" Canvas.Left="76.9188" Canvas.Top="34.9188" Stretch="Fill">
+        <Ellipse x:Name="thumb" Width="32.6667" Height="32.6667" Canvas.Left="76.9188" Canvas.Top="34.9188" Stretch="Fill">
             <Ellipse.Fill>
                 <RadialGradientBrush RadiusX="0.5" RadiusY="0.5" Center="0.499999,0.500002" GradientOrigin="0.499999,0.500002">
                     <RadialGradientBrush.GradientStops>
