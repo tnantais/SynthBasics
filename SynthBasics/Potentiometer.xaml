@@ -5,10 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="400">
-    <Canvas x:Name="bkgnd" Width="389.171" Height="389.171" Opacity="1" Background="{x:Null}">
-        <Path x:Name="Path" Width="355" Height="303.744" Canvas.Left="17.0855" Canvas.Top="17.0854" Stretch="Fill" StrokeThickness="5" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 70.8418,318.329C 2.50002,249.987 2.50002,139.184 70.8418,70.8418C 139.184,2.5 249.987,2.5 318.329,70.8418C 386.671,139.184 386.671,249.987 318.329,318.329"/>
-        <Ellipse x:Name="Ellipse" Width="298" Height="298" Canvas.Left="45.5855" Canvas.Top="45.5854" Stretch="Fill" Fill="#FFEBF934"/>
-        <Ellipse x:Name="Ellipse_0" Width="283" Height="283" Canvas.Left="53.0855" Canvas.Top="53.0854" Stretch="Fill">
+    <Canvas x:Name="bkdnd" Width="400" Height="400" Canvas.Left="0" Canvas.Top="0">
+        <Ellipse x:Name="Ellipse" Width="370" Height="370" Canvas.Left="15" Canvas.Top="15" Stretch="Fill" StrokeThickness="20" StrokeLineJoin="Round" Stroke="#FF000000"/>
+        <Ellipse x:Name="Ellipse_6" Width="298" Height="298" Canvas.Left="50.9966" Canvas.Top="50.9964" Stretch="Fill" Fill="#FFEBF934"/>
+        <Ellipse x:Name="Ellipse_7" Width="283" Height="283" Canvas.Left="58.4966" Canvas.Top="58.4964" Stretch="Fill">
             <Ellipse.Fill>
                 <LinearGradientBrush StartPoint="0.5,1.00153" EndPoint="0.5,-0.00153375">
                     <LinearGradientBrush.GradientStops>
@@ -18,13 +18,13 @@
                 </LinearGradientBrush>
             </Ellipse.Fill>
         </Ellipse>
-        <Ellipse x:Name="Ellipse_1" Width="200" Height="200" Canvas.Left="94.5855" Canvas.Top="88.5854" Stretch="Fill" Fill="#80FFFFFF">
+        <Ellipse x:Name="Ellipse_8" Width="200" Height="200" Canvas.Left="99.9967" Canvas.Top="93.9965" Stretch="Fill" Fill="#80FFFFFF">
             <Ellipse.Effect>
                 <BlurEffect Radius="11.3386"/>
             </Ellipse.Effect>
         </Ellipse>
-        <Ellipse x:Name="Ellipse_2" Width="200" Height="200" Canvas.Left="94.5855" Canvas.Top="91.5854" Stretch="Fill" Fill="#FFFFFFFF"/>
-        <Ellipse x:Name="Ellipse_3" Width="200" Height="200" Canvas.Left="94.5855" Canvas.Top="94.5854" Stretch="Fill">
+        <Ellipse x:Name="Ellipse_9" Width="200" Height="200" Canvas.Left="99.9967" Canvas.Top="96.9965" Stretch="Fill" Fill="#FFFFFFFF"/>
+        <Ellipse x:Name="Ellipse_10" Width="200" Height="200" Canvas.Left="99.9967" Canvas.Top="99.9965" Stretch="Fill">
             <Ellipse.Fill>
                 <LinearGradientBrush StartPoint="0.5,1.00153" EndPoint="0.5,-0.00153381">
                     <LinearGradientBrush.GradientStops>
@@ -34,9 +34,9 @@
                 </LinearGradientBrush>
             </Ellipse.Fill>
         </Ellipse>
-        <Ellipse x:Name="thumb" Width="32.6667" Height="32.6667" Canvas.Left="76.9188" Canvas.Top="34.9188" Stretch="Fill">
+        <Ellipse x:Name="thumb" Width="32.6667" Height="32.6667" Canvas.Left="81.33" Canvas.Top="40.3297" Stretch="Fill">
             <Ellipse.Fill>
-                <RadialGradientBrush RadiusX="0.5" RadiusY="0.5" Center="0.499999,0.500002" GradientOrigin="0.499999,0.500002">
+                <RadialGradientBrush RadiusX="0.5" RadiusY="0.5" Center="0.499999,0.500003" GradientOrigin="0.499999,0.500003">
                     <RadialGradientBrush.GradientStops>
                         <GradientStop Color="#FFBAFF00" Offset="0"/>
                         <GradientStop Color="#80BAFF00" Offset="0.267241"/>
@@ -48,5 +48,5 @@
                 </RadialGradientBrush>
             </Ellipse.Fill>
         </Ellipse>
-    </Canvas>
+    </Canvas>    
 </UserControl>

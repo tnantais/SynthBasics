@@ -61,8 +61,8 @@ namespace SynthBasics
         private static void CurrentSettingChanged(DependencyObject depObj, DependencyPropertyChangedEventArgs args)
         {
             Potentiometer c = (Potentiometer)depObj;
-            Point center = new Point { X = 175, Y = 175 };
-            double radius = 177.5;
+            Point center = new Point { X = 200, Y = 200 };
+            double radius = 175;
             double angleinradians;
             Point newpos;
             double PI = 3.1415927;
@@ -70,6 +70,10 @@ namespace SynthBasics
             angleinradians = (2.65 * ((double) args.NewValue) - 225) * PI / 180.0;
 
             newpos = new Point(center.X + radius * Math.Cos(angleinradians), center.Y + radius * Math.Sin(angleinradians));
+
+            //subtract half the width and height of the dot to place the top-left corner
+            newpos.X -= 16.3333;
+            newpos.Y -= 16.3333;
 
             c.thumb.SetValue(Canvas.LeftProperty, newpos.X);
             c.thumb.SetValue(Canvas.TopProperty, newpos.Y);
