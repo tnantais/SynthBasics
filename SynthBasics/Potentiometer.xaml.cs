@@ -62,18 +62,18 @@ namespace SynthBasics
         {
             Potentiometer c = (Potentiometer)depObj;
             Point center = new Point { X = 200, Y = 200 };
-            double radius = 175;
+            double radius = 175; //circular arc has overall diameter of 370, but that includes a stroke width of 20 pixels
             double angleinradians;
             Point newpos;
-            double PI = 3.1415927;
 
-            angleinradians = (2.65 * ((double) args.NewValue) - 225) * PI / 180.0;
+            //convert a value from 0 to 100 to an angle (remembering that +ve X and Y are down and to the right)
+            angleinradians = (2.65 * ((double) args.NewValue) - 225) * Math.PI / 180.0;
 
             newpos = new Point(center.X + radius * Math.Cos(angleinradians), center.Y + radius * Math.Sin(angleinradians));
 
             //subtract half the width and height of the dot to place the top-left corner
-            newpos.X -= 16.3333;
-            newpos.Y -= 16.3333;
+            newpos.X -= c.thumb.ActualWidth / 2;
+            newpos.Y -= c.thumb.ActualHeight / 2;
 
             c.thumb.SetValue(Canvas.LeftProperty, newpos.X);
             c.thumb.SetValue(Canvas.TopProperty, newpos.Y);
