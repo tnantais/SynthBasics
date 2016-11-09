@@ -1,8 +1,38 @@
 ﻿<Window x:Class="SynthBasics.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        xmlns:myCtrls="clr-namespace:SynthBasics"
+        Title="MainWindow" Height="600" Width="600" Background="#FF202B24">
+    <Canvas>
+        <Viewbox Width="100" Height="100">
+            <myCtrls:Potentiometer x:Name="myPot" CurrentSetting="50.0">
+                <myCtrls:Potentiometer.Triggers>
+                    <EventTrigger RoutedEvent="myCtrls:Potentiometer.Loaded">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard>
+                                <Storyboard TargetProperty="CurrentSetting">
+                                    <DoubleAnimation From="0" To="100" Duration="0:0:10"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                </myCtrls:Potentiometer.Triggers>
+            </myCtrls:Potentiometer>
+        </Viewbox>
+        <Viewbox Width="200" Height="200" Canvas.Left="210">
+            <myCtrls:Potentiometer x:Name="myPot2" CurrentSetting="50.0">
+                <myCtrls:Potentiometer.Triggers>
+                    <EventTrigger RoutedEvent="myCtrls:Potentiometer.Loaded">
+                        <EventTrigger.Actions>
+                            <BeginStoryboard>
+                                <Storyboard TargetProperty="CurrentSetting">
+                                    <DoubleAnimation From="0" To="100" Duration="0:0:10"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger.Actions>
+                    </EventTrigger>
+                </myCtrls:Potentiometer.Triggers>
+            </myCtrls:Potentiometer>
+        </Viewbox>
+    </Canvas>
 </Window>
