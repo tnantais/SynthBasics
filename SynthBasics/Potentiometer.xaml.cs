@@ -53,7 +53,7 @@ namespace SynthBasics
             Point newpos;
 
             //convert a value from 0 to 100 to an angle from -225 to +45 (remembering that +ve X and Y are down and to the right)
-            angleinradians = (2.65 * ((double) args.NewValue) - 225) * Math.PI / 180.0;
+            angleinradians = (2.7 * ((double) args.NewValue) - 225) * Math.PI / 180.0;
 
             newpos = new Point(_center.X + radius * Math.Cos(angleinradians), _center.Y + radius * Math.Sin(angleinradians));
 
