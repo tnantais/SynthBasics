@@ -69,7 +69,7 @@ namespace SynthBasics
         {
             Point pos = e.GetPosition((IInputElement) this); //get position relative to pot
             double newsetting = ConvertRingPositionToPotSetting(pos);
-            MessageBox.Show("new value: " + newsetting.ToString());
+            this.CurrentSetting = newsetting;
         }
 
         private double ConvertRingPositionToPotSetting(Point posInRing)
