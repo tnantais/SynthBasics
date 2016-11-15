@@ -6,17 +6,6 @@
     <Canvas>
         <Viewbox Width="100" Height="100">
             <myCtrls:Potentiometer x:Name="myPot" CurrentSetting="50.0">
-                <myCtrls:Potentiometer.Triggers>
-                    <EventTrigger RoutedEvent="myCtrls:Potentiometer.Loaded">
-                        <EventTrigger.Actions>
-                            <BeginStoryboard>
-                                <Storyboard TargetProperty="CurrentSetting">
-                                    <DoubleAnimation From="0" To="100" Duration="0:0:10"/>
-                                </Storyboard>
-                            </BeginStoryboard>
-                        </EventTrigger.Actions>
-                    </EventTrigger>
-                </myCtrls:Potentiometer.Triggers>
             </myCtrls:Potentiometer>
         </Viewbox>
         <Viewbox Width="200" Height="200" Canvas.Left="210">
