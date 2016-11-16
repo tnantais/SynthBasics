@@ -6,7 +6,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="400">
     <Canvas x:Name="bkdnd" Width="400" Height="400" Canvas.Left="0" Canvas.Top="0">
-        <Path x:Name="Path" Width="370" Height="318.744" Canvas.Left="15.0004" Canvas.Top="15.0002" Stretch="Fill" StrokeThickness="20" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 76.2566,323.744C 7.91495,255.402 7.91492,144.598 76.2566,76.2565C 144.598,7.91476 255.402,7.91479 323.744,76.2564C 392.086,144.598 392.086,255.402 323.744,323.744"/>
+        <Path x:Name="Path" Width="370" Height="318.744" Canvas.Left="15.0004" Canvas.Top="15.0002" Stretch="Fill" StrokeThickness="20" StrokeLineJoin="Round" Stroke="#FF000000" Data="F1 M 76.2566,323.744C 7.91495,255.402 7.91492,144.598 76.2566,76.2565C 144.598,7.91476 255.402,7.91479 323.744,76.2564C 392.086,144.598 392.086,255.402 323.744,323.744" MouseUp="Path_MouseUp" />
         <Ellipse x:Name="Ellipse_6" Width="298" Height="298" Canvas.Left="50.9966" Canvas.Top="50.9964" Stretch="Fill" Fill="#FFEBF934"/>
         <Ellipse x:Name="Ellipse_7" Width="283" Height="283" Canvas.Left="58.4966" Canvas.Top="58.4964" Stretch="Fill">
             <Ellipse.Fill>
@@ -24,11 +24,11 @@
             </Ellipse.Effect>
         </Ellipse>
         <Ellipse x:Name="Ellipse_9" Width="200" Height="200" Canvas.Left="99.9967" Canvas.Top="96.9965" Stretch="Fill" Fill="#FFFFFFFF"/>
-        <Ellipse x:Name="Ellipse_10" Width="200" Height="200" Canvas.Left="99.9967" Canvas.Top="99.9965" Stretch="Fill">
+        <Ellipse x:Name="Ellipse_10" Width="200" Height="200" Canvas.Left="99.9967" Canvas.Top="99.9965" Stretch="Fill" MouseDown="Ellipse_10_MouseDown" LostMouseCapture="Ellipse_10_LostMouseCapture" MouseMove="Ellipse_10_MouseMove" MouseLeftButtonDown="Ellipse_10_MouseLeftButtonDown" MouseLeftButtonUp="Ellipse_10_MouseLeftButtonUp">
             <Ellipse.Fill>
                 <LinearGradientBrush StartPoint="0.5,1.00153" EndPoint="0.5,-0.00153381">
                     <LinearGradientBrush.GradientStops>
-                        <GradientStop Color="#FF3A3A3A" Offset="0"/>
+                        <GradientStop Color="#FF262626" Offset="0"/>
                         <GradientStop Color="#FF484848" Offset="1"/>
                     </LinearGradientBrush.GradientStops>
                 </LinearGradientBrush>
@@ -38,9 +38,9 @@
             <Ellipse.Fill>
                 <RadialGradientBrush RadiusX="0.5" RadiusY="0.5" Center="0.499999,0.500003" GradientOrigin="0.499999,0.500003">
                     <RadialGradientBrush.GradientStops>
-                        <GradientStop Color="#FFBAFF00" Offset="0"/>
-                        <GradientStop Color="#80BAFF00" Offset="0.267241"/>
-                        <GradientStop Color="#00BAFF00" Offset="1"/>
+                        <GradientStop Color="#FFEBF934" Offset="0"/>
+                        <GradientStop Color="#80EBF934" Offset="0.267241"/>
+                        <GradientStop Color="#00EBF934" Offset="1"/>
                     </RadialGradientBrush.GradientStops>
                     <RadialGradientBrush.RelativeTransform>
                         <TransformGroup/>
@@ -48,5 +48,10 @@
                 </RadialGradientBrush>
             </Ellipse.Fill>
         </Ellipse>
+        <Rectangle x:Name="PositionMark" Width="15" Height="6" Canvas.Left="285" Canvas.Top="197" Stretch="Fill" Fill="#FFEBF934">
+            <Rectangle.RenderTransform>
+                <RotateTransform CenterX="-85" CenterY="3" Angle="45" />
+            </Rectangle.RenderTransform>
+        </Rectangle>
     </Canvas>    
 </UserControl>
