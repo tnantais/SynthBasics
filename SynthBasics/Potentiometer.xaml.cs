@@ -20,10 +20,16 @@ namespace SynthBasics
     public partial class Potentiometer : UserControl
     {
         static private readonly Point _center = new Point { X = 200, Y = 200 };
+        private bool isDragging;
+        private double potAngleOnDragStart;
+        private double mouseAngleOnDragStart;
 
         public Potentiometer()
         {
             InitializeComponent();
+            isDragging = false;
+            potAngleOnDragStart = 0;
+            mouseAngleOnDragStart = 0;
         }
 
         public double CurrentSetting
@@ -52,8 +58,7 @@ namespace SynthBasics
             double angleinradians, angleindegrees;
             Point newpos;
 
-            //convert a value from 0 to 100 to an angle from -225 to +45 (remembering that +ve X and Y are down and to the right)
-            angleindegrees = (2.7 * ((double)args.NewValue) - 225);
+            angleindegrees = ConvertPotSettingToAngleInDegrees((double)args.NewValue);
             angleinradians = angleindegrees * Math.PI / 180.0;
 
             newpos = new Point(_center.X + radius * Math.Cos(angleinradians), _center.Y + radius * Math.Sin(angleinradians));
@@ -64,20 +69,22 @@ namespace SynthBasics
 
             c.thumb.SetValue(Canvas.LeftProperty, newpos.X);
             c.thumb.SetValue(Canvas.TopProperty, newpos.Y);
+
+            //rotate the mark at the end of the dial
             ((RotateTransform)(c.PositionMark.RenderTransform)).Angle = angleindegrees;
         }
 
         private void Path_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            double angleindegrees;
             Point pos = e.GetPosition((IInputElement) this); //get position relative to pot
-            double newsetting = ConvertRingPositionToPotSetting(pos);
+            angleindegrees = ConvertRingPositionToAngleInDegrees(pos);
+            double newsetting = ConvertAngleInDegreesToPotSetting(angleindegrees);
             this.CurrentSetting = newsetting;
         }
 
-        private double ConvertRingPositionToPotSetting(Point posInRing)
+        private static double ConvertRingPositionToAngleInDegrees(Point posInRing)
         {
-            double potvalue = 0;
-
             //The angle range runs from 45 (fully CW) to -225 (fully CCW) because Y increases downward
             double angleinradians = Math.Atan2(posInRing.Y - _center.Y, posInRing.X - _center.X);
             double angleindegrees = angleinradians * 180 / Math.PI;
@@ -86,11 +93,79 @@ namespace SynthBasics
                 angleindegrees -= 360;
             }
 
-            potvalue = ((angleindegrees + 225) / 270) * 100; 
+            return angleindegrees;
+        }
+
+        private static double ConvertAngleInDegreesToPotSetting(double angleindegrees)
+        {
+            double potvalue = 0;
+
+            //The angle range runs from 45 (fully CW) to -225 (fully CCW) because Y increases downward
+            if (angleindegrees > 45)
+            {
+                angleindegrees -= 360;
+            }
+
+            potvalue = ((angleindegrees + 225) / 270) * 100;
 
             return potvalue;
         }
 
+        private static double ConvertPotSettingToAngleInDegrees(double potsetting)
+        {
+            //convert a value from 0 to 100 to an angle from -225 to +45 (remembering that +ve X and Y are down and to the right)
+            double angleindegrees = 2.7 * potsetting - 225;
+            return angleindegrees;
+        }
+
+        private void Ellipse_10_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+        }
+
+        private void Ellipse_10_LostMouseCapture(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                isDragging = false;
+            }
+        }
+
+        private void Ellipse_10_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isDragging)
+            {
+                double mouseAngle = ConvertRingPositionToAngleInDegrees(e.GetPosition((IInputElement)this));
+                double mouseAngleChange = mouseAngle - mouseAngleOnDragStart;
+                double newPotAngle = potAngleOnDragStart + mouseAngleChange;
+                if (newPotAngle > 45)
+                {
+                    newPotAngle = 45;
+                }
+                else if (newPotAngle < -225)
+                {
+                    newPotAngle = -225;
+                }
+                double newsetting = ConvertAngleInDegreesToPotSetting(newPotAngle);
+                this.CurrentSetting = newsetting;
+            }
+        }
+
+        private void Ellipse_10_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            //isDragging = CaptureMouse();
+            isDragging = true;
+            if (isDragging)
+            {
+                potAngleOnDragStart = ConvertPotSettingToAngleInDegrees(CurrentSetting);
+                mouseAngleOnDragStart = ConvertRingPositionToAngleInDegrees(e.GetPosition((IInputElement)this));
+            }
+        }
+
+        private void Ellipse_10_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            //ReleaseMouseCapture();
+            isDragging = false;
+        }
 
         
     }
