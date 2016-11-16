@@ -48,5 +48,10 @@
                 </RadialGradientBrush>
             </Ellipse.Fill>
         </Ellipse>
+        <Rectangle x:Name="PositionMark" Width="15" Height="6" Canvas.Left="285" Canvas.Top="197" Stretch="Fill" Fill="#FFEBF934">
+            <Rectangle.RenderTransform>
+                <RotateTransform CenterX="-85" CenterY="3" Angle="45" />
+            </Rectangle.RenderTransform>
+        </Rectangle>
     </Canvas>    
 </UserControl>

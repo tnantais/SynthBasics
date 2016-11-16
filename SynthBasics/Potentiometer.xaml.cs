@@ -49,11 +49,12 @@ namespace SynthBasics
         {
             Potentiometer c = (Potentiometer)depObj;
             double radius = 175; //circular arc has overall diameter of 370, but that includes a stroke width of 20 pixels
-            double angleinradians;
+            double angleinradians, angleindegrees;
             Point newpos;
 
             //convert a value from 0 to 100 to an angle from -225 to +45 (remembering that +ve X and Y are down and to the right)
-            angleinradians = (2.7 * ((double) args.NewValue) - 225) * Math.PI / 180.0;
+            angleindegrees = (2.7 * ((double)args.NewValue) - 225);
+            angleinradians = angleindegrees * Math.PI / 180.0;
 
             newpos = new Point(_center.X + radius * Math.Cos(angleinradians), _center.Y + radius * Math.Sin(angleinradians));
 
@@ -63,6 +64,7 @@ namespace SynthBasics
 
             c.thumb.SetValue(Canvas.LeftProperty, newpos.X);
             c.thumb.SetValue(Canvas.TopProperty, newpos.Y);
+            ((RotateTransform)(c.PositionMark.RenderTransform)).Angle = angleindegrees;
         }
 
         private void Path_MouseUp(object sender, MouseButtonEventArgs e)
