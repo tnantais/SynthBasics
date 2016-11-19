@@ -24,7 +24,7 @@
             </Ellipse.Effect>
         </Ellipse>
         <Ellipse x:Name="Ellipse_9" Width="200" Height="200" Canvas.Left="99.9967" Canvas.Top="96.9965" Stretch="Fill" Fill="#FFFFFFFF"/>
-        <Ellipse x:Name="Ellipse_10" Width="200" Height="200" Canvas.Left="99.9967" Canvas.Top="99.9965" Stretch="Fill" MouseDown="Ellipse_10_MouseDown" LostMouseCapture="Ellipse_10_LostMouseCapture" MouseMove="Ellipse_10_MouseMove" MouseLeftButtonDown="Ellipse_10_MouseLeftButtonDown" MouseLeftButtonUp="Ellipse_10_MouseLeftButtonUp">
+        <Ellipse x:Name="Ellipse_10" Width="200" Height="200" Canvas.Left="99.9967" Canvas.Top="99.9965" Stretch="Fill" LostMouseCapture="Ellipse_10_LostMouseCapture" MouseMove="Ellipse_10_MouseMove" MouseLeftButtonDown="Ellipse_10_MouseLeftButtonDown" MouseLeftButtonUp="Ellipse_10_MouseLeftButtonUp">
             <Ellipse.Fill>
                 <LinearGradientBrush StartPoint="0.5,1.00153" EndPoint="0.5,-0.00153381">
                     <LinearGradientBrush.GradientStops>

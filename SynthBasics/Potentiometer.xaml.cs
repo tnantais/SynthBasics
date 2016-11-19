@@ -22,14 +22,14 @@ namespace SynthBasics
         static private readonly Point _center = new Point { X = 200, Y = 200 };
         private bool isDragging;
         private double potAngleOnDragStart;
-        private double mouseAngleOnDragStart;
+        private AngleHysteresisCalculator angleHysteresisCalculator;
 
         public Potentiometer()
         {
             InitializeComponent();
             isDragging = false;
             potAngleOnDragStart = 0;
-            mouseAngleOnDragStart = 0;
+            angleHysteresisCalculator = new AngleHysteresisCalculator();
         }
 
         public double CurrentSetting
@@ -118,10 +118,6 @@ namespace SynthBasics
             return angleindegrees;
         }
 
-        private void Ellipse_10_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-        }
-
         private void Ellipse_10_LostMouseCapture(object sender, MouseEventArgs e)
         {
             if (isDragging)
@@ -135,8 +131,11 @@ namespace SynthBasics
             if (isDragging)
             {
                 double mouseAngle = ConvertRingPositionToAngleInDegrees(e.GetPosition((IInputElement)this));
-                double mouseAngleChange = mouseAngle - mouseAngleOnDragStart;
+
+                double mouseAngleChange = angleHysteresisCalculator.processAngle(mouseAngle);
+                
                 double newPotAngle = potAngleOnDragStart + mouseAngleChange;
+                
                 if (newPotAngle > 45)
                 {
                     newPotAngle = 45;
@@ -145,6 +144,7 @@ namespace SynthBasics
                 {
                     newPotAngle = -225;
                 }
+
                 double newsetting = ConvertAngleInDegreesToPotSetting(newPotAngle);
                 this.CurrentSetting = newsetting;
             }
@@ -157,7 +157,7 @@ namespace SynthBasics
             if (isDragging)
             {
                 potAngleOnDragStart = ConvertPotSettingToAngleInDegrees(CurrentSetting);
-                mouseAngleOnDragStart = ConvertRingPositionToAngleInDegrees(e.GetPosition((IInputElement)this));
+                angleHysteresisCalculator.init(ConvertRingPositionToAngleInDegrees(e.GetPosition((IInputElement)this)));
             }
         }
 
